@@ -15,7 +15,8 @@ public class MainController {
 
     @GetMapping("/test")
     public String test(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
+//        model.addAttribute("name", name);
+        model.addAttribute("name", "test");
         return "test";
     }
 }
