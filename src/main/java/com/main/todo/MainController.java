@@ -15,7 +15,9 @@ public class MainController {
 
     @GetMapping("/test")
     public String test() {
-
+        Member member = new Member();
+        member.setId(Long.parseLong("1022"));
+        member.getAge();
         return "test";
     }
 }
