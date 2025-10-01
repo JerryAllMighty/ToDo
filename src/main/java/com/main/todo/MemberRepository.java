@@ -1,7 +1,21 @@
 package com.main.todo;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
 
-public interface MemberRepository extends JpaRepository<Member, Long> {
-    // findByName, findByAge 등 메서드 네이밍으로 자동 쿼리 생성 가능
+@Repository
+public class MemberRepository {
+
+    @PersistenceContext
+    private EntityManager em;
+
+    public Long save(Member member) {
+        em.persist(member);
+        return member.getId();
+    }
+
+    public Member find(Long id) {
+        return em.find(Member.class, id);
+    }
 }

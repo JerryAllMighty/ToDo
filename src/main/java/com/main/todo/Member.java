@@ -4,17 +4,18 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(name = "MBR")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Member {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    private String username;
 
     private int age;
 
