@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ToDo.iml" filepath="$PROJECT_DIR$/.idea/ToDo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ToDo.ToDo.iml" filepath="$PROJECT_DIR$/.idea/modules/ToDo.ToDo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ToDo.ToDo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ToDo.ToDo.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ToDo.ToDo.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ToDo.ToDo.test.iml" />
     </modules>
   </component>
 </project>
