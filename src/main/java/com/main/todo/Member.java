@@ -12,10 +12,12 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //id
 
-    private String username;
+    private String username; //사용자 이름
 
-    private int age;
+    private int age; //나이
+
+    private int gogo2; //임시 변수 (테스트용)
 
 }
