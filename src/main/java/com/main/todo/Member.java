@@ -10,19 +10,21 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(uniqueConstraints = {@UniqueConstraint(name = "pk_user_id", columnNames = {"id"}), @UniqueConstraint(name = "pk_user_username", columnNames = {"name"})})
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //id
 
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false)
     private String username; //사용자 이름
 
     private int age; //나이
 
     @Column(precision = 5, scale = 2)
     private BigDecimal gogo2; //임시 변수 (테스트용)
+
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
 
 }
