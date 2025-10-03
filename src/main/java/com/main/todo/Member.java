@@ -14,6 +14,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //id
 
+    @Column(name = "name", nullable = false)
     private String username; //사용자 이름
 
     private int age; //나이
