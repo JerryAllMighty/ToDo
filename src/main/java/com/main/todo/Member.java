@@ -3,6 +3,8 @@ package com.main.todo;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -20,6 +22,7 @@ public class Member {
 
     private int age; //나이
 
-    private int gogo2; //임시 변수 (테스트용)
+    @Column(precision = 5, scale = 2)
+    private BigDecimal gogo2; //임시 변수 (테스트용)
 
 }
