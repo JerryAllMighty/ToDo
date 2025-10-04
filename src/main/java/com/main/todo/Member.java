@@ -23,6 +23,9 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orderList;
 
+    @Embedded
+    private Address address;
+
 
 //    private String city;
 //
