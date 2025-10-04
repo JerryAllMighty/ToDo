@@ -13,18 +13,17 @@ import java.math.BigDecimal;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //DB에 위임
     private Long id; //id
 
     @Column(nullable = false)
-    private String username; //사용자 이름
+    private String name; //사용자 이름
 
-    private int age; //나이
+    private String city;
 
-    @Column(precision = 5, scale = 2)
-    private BigDecimal gogo2; //임시 변수 (테스트용)
+    private String street;
 
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    private String zipCode;
+
 
 }
