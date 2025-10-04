@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,11 +20,15 @@ public class Member {
     @Column(nullable = false)
     private String name; //사용자 이름
 
-    private String city;
+    @OneToMany(mappedBy = "member")
+    private List<Order> orderList;
 
-    private String street;
 
-    private String zipCode;
+//    private String city;
+//
+//    private String street;
+//
+//    private String zipCode;
 
 
 }
