@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -23,5 +25,7 @@ public class Category {
 
 //    private Parent parent;
 
+
+    private List<Item> itemList;
     private String name;
 }
