@@ -1,11 +1,11 @@
-package com.main.todo.domain;
+package com.main.todo.domain.item;
 
 import com.main.todo.DeliveryType;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Getter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -27,17 +27,5 @@ public class Item {
 
     @Enumerated(EnumType.STRING)
     private DeliveryType dType;
-
-    private String artist;
-
-    private String etc;
-
-    private String author;
-
-    private String isbn;
-
-    private String director;
-
-    private String actor;
 
 }

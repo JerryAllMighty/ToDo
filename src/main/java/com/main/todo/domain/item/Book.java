@@ -1,11 +1,12 @@
-package com.main.todo.domain;
+package com.main.todo.domain.item;
 
+import com.main.todo.domain.item.Item;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.*;
 
 @Entity
-@Getter
+@Getter @Setter
 @Builder
 @DiscriminatorValue("B")
 @NoArgsConstructor
