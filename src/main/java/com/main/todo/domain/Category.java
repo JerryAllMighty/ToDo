@@ -1,5 +1,6 @@
 package com.main.todo.domain;
 
+import com.main.todo.domain.item.Item;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,7 +19,11 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    //TODO :  다대다 관계 엔티티 매핑 이해 다시 하기
+    @ManyToMany
+    @JoinTable(name = "category_item",
+    joinColumns = @JoinColumn(name = "category_id"),
+    inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> itemList;
 
     private String name;
@@ -30,7 +35,7 @@ public class Category {
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
 
-    public void setParent(Category parent){
+    public void setParent(Category parent) {
         this.parent = parent;
         parent.addChildCategory(this);
 
