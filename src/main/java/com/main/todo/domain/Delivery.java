@@ -3,7 +3,7 @@ package com.main.todo.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
+@Getter @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,4 +22,7 @@ public class Delivery {
 
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
+
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus deliveryStatus;
 }
