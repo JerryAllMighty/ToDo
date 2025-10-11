@@ -1,4 +1,4 @@
-package com.main.todo;
+package com.main.todo.domain;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;

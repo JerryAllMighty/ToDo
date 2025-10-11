@@ -1,5 +1,6 @@
 package com.main.todo;
 
+import com.main.todo.domain.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;

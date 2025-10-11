@@ -1,5 +1,6 @@
-package com.main.todo;
+package com.main.todo.domain;
 
+import com.main.todo.DeliveryType;
 import jakarta.persistence.*;
 import lombok.*;
 

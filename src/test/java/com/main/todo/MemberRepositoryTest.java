@@ -1,5 +1,6 @@
 package com.main.todo;
 
+import com.main.todo.domain.Member;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

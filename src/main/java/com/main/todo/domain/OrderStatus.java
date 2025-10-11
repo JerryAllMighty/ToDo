@@ -1,4 +1,4 @@
-package com.main.todo;
+package com.main.todo.domain;
 
 public enum OrderStatus {
     ORDER, CANCEL
