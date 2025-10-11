@@ -3,6 +3,7 @@ package com.main.todo.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,7 +22,7 @@ public class Member {
     private String name; //사용자 이름
 
     @OneToMany(mappedBy = "member")
-    private List<Order> orderList;
+    private List<Order> orderList = new ArrayList<>();
 
     @Embedded
     private Address address;
