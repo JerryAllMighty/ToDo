@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,9 +31,9 @@ public class Order {
     private Delivery delivery;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItemList;
+    private List<OrderItem> orderItemList = new ArrayList<>();
 
-    private LocalDate orderDate;
+    private LocalDateTime orderDate;
 
     private String status;
 

@@ -1,5 +1,6 @@
 package com.main.todo.domain;
 
+import com.main.todo.domain.item.Item;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,7 +8,7 @@ import lombok.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Getter @Setter
 public class OrderItem {
     @Id
     @GeneratedValue
@@ -22,7 +23,7 @@ public class OrderItem {
     @JoinColumn(name = "item_id")
     private Item item;
 
-    private Integer orderPrice;
+    private int orderPrice;
 
-    private Integer count;
+    private int count;
 }
