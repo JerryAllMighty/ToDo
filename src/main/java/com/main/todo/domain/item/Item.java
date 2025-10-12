@@ -1,17 +1,22 @@
 package com.main.todo.domain.item;
 
 import com.main.todo.DeliveryType;
+import com.main.todo.domain.Category;
+import com.main.todo.domain.DeliveryStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
-public class Item {
+public abstract class Item {
 
     @Id
     @GeneratedValue
@@ -25,7 +30,10 @@ public class Item {
 
     private Integer stockQuantity;
 
+    @ManyToMany(mappedBy = "itemList")
+    private List<Category> categoryList = new ArrayList<>();
+
     @Enumerated(EnumType.STRING)
-    private DeliveryType dType;
+    private DeliveryStatus deliveryStatus;
 
 }

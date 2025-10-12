@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,9 +23,9 @@ public class Category {
     //TODO :  다대다 관계 엔티티 매핑 이해 다시 하기
     @ManyToMany
     @JoinTable(name = "category_item",
-    joinColumns = @JoinColumn(name = "category_id"),
-    inverseJoinColumns = @JoinColumn(name = "item_id"))
-    private List<Item> itemList;
+            joinColumns = @JoinColumn(name = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
+    private List<Item> itemList = new ArrayList<>();
 
     private String name;
 

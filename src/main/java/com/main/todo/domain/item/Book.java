@@ -7,7 +7,6 @@ import lombok.*;
 
 @Entity
 @Getter @Setter
-@Builder
 @DiscriminatorValue("B")
 @NoArgsConstructor
 @AllArgsConstructor
