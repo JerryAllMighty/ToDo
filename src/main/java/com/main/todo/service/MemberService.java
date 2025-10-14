@@ -1,11 +1,10 @@
 package com.main.todo;
 
 import com.main.todo.domain.Member;
+import com.main.todo.repository.MemberRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
 
 @Service
 @Transactional
