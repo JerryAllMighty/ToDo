@@ -26,13 +26,4 @@ public class Member {
 
     @Embedded
     private Address address;
-
-
-//    private String city;
-//
-//    private String street;
-//
-//    private String zipCode;
-
-
 }
