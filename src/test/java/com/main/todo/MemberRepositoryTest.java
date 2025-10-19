@@ -1,6 +1,7 @@
 package com.main.todo;
 
 import com.main.todo.domain.Member;
+import com.main.todo.repository.MemberRepository;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ class MemberRepositoryTest {
 
         //when
         Long savedId = memberRepository.save(member);
-        Member findMember = memberRepository.find(savedId);
+        Member findMember = memberRepository.findOne(savedId);
 
         //then
         Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
