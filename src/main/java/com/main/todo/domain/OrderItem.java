@@ -6,7 +6,7 @@ import lombok.*;
 
 @Builder
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
 @Setter
@@ -27,10 +27,6 @@ public class OrderItem {
     private int orderPrice;
 
     private int count;
-
-    protected OrderItem(){
-
-    }
 
     /**
      * 생성 메서드
