@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "orders")
 public class Order {
-
     @Id
     @GeneratedValue
     @Column(name = "order_id")
@@ -73,8 +72,8 @@ public class Order {
     /**
      * 주문 취소
      */
-    public void cancelOrder() {
-        if (delivery.getStatus().equals(DeliveryStatus.COMP)) {
+    public void cancel() {
+        if (delivery.getDeliveryStatus().equals(DeliveryStatus.COMP)) {
             throw new IllegalStateException("이미 배송 완료된 상품은 취소할 수 없습니다.");
         }
         this.setStatus(OrderStatus.CANCEL);
