@@ -40,12 +40,9 @@ class MemberServiceTest {
         member2.setName("kim");
 
         memberService.join(member1);
-        try {
+
+        assertThrows(IllegalStateException.class, () -> {
             memberService.join(member2);
-        } catch (IllegalStateException e) {
-            return;
-        }
-//        assertThrows(new IllegalStateException, memberService.join(member2));
-        fail("예외가 발생해야한다");
+        });
     }
 }
