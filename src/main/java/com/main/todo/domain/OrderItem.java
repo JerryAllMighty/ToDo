@@ -28,6 +28,10 @@ public class OrderItem {
 
     private int count;
 
+    protected OrderItem(){
+
+    }
+
     /**
      * 생성 메서드
      *
