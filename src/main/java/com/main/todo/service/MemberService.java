@@ -2,6 +2,7 @@ package com.main.todo.service;
 
 import com.main.todo.domain.Member;
 import com.main.todo.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class MemberService {
 
     //TODO : JPA 실전편 1 , 17강에서 해당하는 생성자 주입까지의 과정, 잘 이해하기
@@ -53,6 +55,7 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public Member findOne(Long memberId) {
         return memberRepository.findOne(memberId);
 
