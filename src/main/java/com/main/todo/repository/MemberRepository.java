@@ -3,15 +3,17 @@ package com.main.todo.repository;
 import com.main.todo.domain.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
-    @PersistenceContext //해당 Bean이 있다면 스프링이 생성한 엔티티 매니저를 주입해준다
-    private EntityManager em;
+//    @PersistenceContext //해당 Bean이 있다면 스프링이 생성한 엔티티 매니저를 주입해준다
+    private final EntityManager em;
 
 
 //    @PersistenceUnit //해당 Bean이 있다면 스프링이 생성한 엔티티 매니저 팩토리를 주입해준다
