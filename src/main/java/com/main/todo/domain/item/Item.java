@@ -3,6 +3,7 @@ package com.main.todo.domain.item;
 import com.main.todo.DeliveryType;
 import com.main.todo.domain.Category;
 import com.main.todo.domain.DeliveryStatus;
+import com.main.todo.exception.NotEnoughStockException;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +26,6 @@ public abstract class Item {
 
     private String name;
 
-    //TODO : int 형으로 선언이 뭐가 다른지
     private Integer price;
 
     private Integer stockQuantity;
@@ -35,5 +35,27 @@ public abstract class Item {
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus;
+
+    /**
+     * 재고 증가
+     *
+     * @param stockQuantity
+     */
+    public void addStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
+
+    }
+
+    /**
+     * 재고 감소
+     */
+    public void removeStockQuantity(int stockQuantity) {
+        int leftStockQuantity = this.stockQuantity - stockQuantity;
+        if (leftStockQuantity < 0) {
+            throw new NotEnoughStockException("Need More Stock");
+        }
+        this.stockQuantity = leftStockQuantity;
+
+    }
 
 }
