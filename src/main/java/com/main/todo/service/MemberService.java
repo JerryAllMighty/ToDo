@@ -26,10 +26,7 @@ public class MemberService {
     public Long join(Member member) {
         //TODO : 바뀐 member 엔티티에 맞추어서 메서드 완성 필요
         validateDuplicateMember(member);
-        memberRepository.save(Member.builder()
-                        .name(member.getName())
-                .build());
-
+        memberRepository.save(member);
         return member.getId();
     }
 
