@@ -11,24 +11,14 @@ import java.util.List;
 
 @Service
 @Transactional
-@RequiredArgsConstructor
+@RequiredArgsConstructor //final 있는 필드만 가지고 생성자를 만들어줌
 public class MemberService {
 
-    //TODO : JPA 실전편 1 , 17강에서 해당하는 생성자 주입까지의 과정, 잘 이해하기
     private final MemberRepository memberRepository;
     //기존의 memberRepository를 바꿀 수 없다. 테스트 등 바꿔야하는 케이스가 생긴다
     // 그래서 setter injection을 쓰기도 한다. Mock 같은 거 주입도 가능
     // 하지만 한 번 애플리케이션이 뜨고 나면 또, 바꿀 일이 없어서, setter injection을 쓰는 것도 또 애매하다.
     // 그래서 생성자 injection을 사용한다
-
-    //생성자 injection
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
-
-    public void save() {
-
-    }
 
     /**
      * 회원 가입
