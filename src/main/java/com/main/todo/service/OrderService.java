@@ -1,9 +1,6 @@
 package com.main.todo.service;
 
-import com.main.todo.domain.Delivery;
-import com.main.todo.domain.Member;
-import com.main.todo.domain.Order;
-import com.main.todo.domain.OrderItem;
+import com.main.todo.domain.*;
 import com.main.todo.domain.item.Item;
 import com.main.todo.repository.ItemRepository;
 import com.main.todo.repository.MemberRepository;
@@ -33,6 +30,7 @@ public class OrderService {
 
         Delivery delivery = new Delivery();
         delivery.setAddress(member.getAddress());
+        delivery.setDeliveryStatus(DeliveryStatus.READY);
 
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
 
@@ -45,7 +43,11 @@ public class OrderService {
     /**
      * 취소
      */
-
+    @Transactional
+    public void cancelOrder(Long orderId) {
+        Order order = orderRepository.findOne(orderId);
+        order.cancel();
+    }
     /**
      * 검색
      */
