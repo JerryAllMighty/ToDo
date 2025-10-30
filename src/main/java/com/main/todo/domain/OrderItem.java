@@ -8,7 +8,8 @@ import lombok.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 public class OrderItem {
     @Id
     @GeneratedValue
@@ -26,4 +27,37 @@ public class OrderItem {
     private int orderPrice;
 
     private int count;
+
+    /**
+     * 생성 메서드
+     *
+     * @param item
+     * @param orderPrice
+     * @param count
+     * @return
+     */
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStockQuantity(count);
+        return orderItem;
+    }
+
+    /**
+     * 주문 상품 취소
+     */
+    public void cancel() {
+        getItem().addStockQuantity(count);
+    }
+
+    /**
+     * 전체 주문상품 가격 조회
+     * @return
+     */
+    public int getTotalPrice() {
+        return orderPrice * count;
+    }
 }
