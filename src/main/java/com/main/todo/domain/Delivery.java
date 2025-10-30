@@ -15,7 +15,7 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
-    private String status;
+    private DeliveryStatus status;
 
     @Embedded
     private Address address;
