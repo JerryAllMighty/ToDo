@@ -11,5 +11,11 @@ public class MemberForm {
     @NotEmpty(message = "회원 이름은 필수입니다")
     private String name;
 
-    private Address address;
+//    private Address address;
+
+    private String city;
+
+    private String street;
+
+    private String zipCode;
 }
