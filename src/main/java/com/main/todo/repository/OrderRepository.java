@@ -3,6 +3,9 @@ package com.main.todo.repository;
 import com.main.todo.domain.Order;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -19,4 +22,9 @@ public class OrderRepository {
         return em.find(Order.class, id);
 
     }
+
+//    public List<Order> findAll() {
+//        em.createQuery("select o from Order o join o.member m", Order.class);
+//
+//    }
 }
