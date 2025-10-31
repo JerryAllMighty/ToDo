@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/api/member")
+//@RestController
+//@RequestMapping("/api/member")
 public class MemberController {
 
-    @Autowired
-    MemberService memberService;
-
-    @PostMapping("/add")
-    public void add(@RequestBody Member member) {
-        memberService.join(member);
-
-    }
+//    @Autowired
+//    MemberService memberService;
+//
+//    @PostMapping("/add")
+//    public void add(@RequestBody Member member) {
+//        memberService.join(member);
+//
+//    }
 }
