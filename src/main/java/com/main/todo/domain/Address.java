@@ -18,15 +18,15 @@ public class Address {
 
     }
 
-    public Address(String city, String street, String zipCode) {
+    public Address(String city, String street, String zipcode) {
         this.city = city;
         this.street = street;
-        this.zipCode = zipCode;
+        this.zipcode = zipcode;
     }
 
     private String city;
 
     private String street;
 
-    private String zipCode;
+    private String zipcode;
 }
