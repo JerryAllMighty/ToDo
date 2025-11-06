@@ -1,5 +1,6 @@
 package com.main.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.main.todo.domain.item.Item;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,6 +19,7 @@ public class OrderItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
+    @JsonIgnore
     private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -55,6 +57,7 @@ public class OrderItem {
 
     /**
      * 전체 주문상품 가격 조회
+     *
      * @return
      */
     public int getTotalPrice() {
