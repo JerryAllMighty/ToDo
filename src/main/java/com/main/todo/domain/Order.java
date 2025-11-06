@@ -27,7 +27,7 @@ public class Order {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "order")
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     private LocalDateTime orderDate;
