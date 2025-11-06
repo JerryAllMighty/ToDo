@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
@@ -47,7 +46,7 @@ class OrderServiceTest {
         Order getOrder = orderRepository.findOne(orderId);
 
         assertEquals("상품 주문시 상태는 ORDER", OrderStatus.ORDER, getOrder.getStatus());
-        assertEquals("상품 주문시 종류 수가 정확", 1, getOrder.getOrderItemList().size());
+        assertEquals("상품 주문시 종류 수가 정확", 1, getOrder.getOrderItems().size());
         assertEquals("상품 주문시 가격은 가격 * 수량", 10000 * orderCount, getOrder.getTotalPrice());
         assertEquals("상품 주문시 주문 수량만큼 재고가 줄어야한다", 8, book.getStockQuantity());
     }
