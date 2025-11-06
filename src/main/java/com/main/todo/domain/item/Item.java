@@ -1,5 +1,6 @@
 package com.main.todo.domain.item;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.main.todo.DeliveryType;
 import com.main.todo.domain.Category;
 import com.main.todo.domain.DeliveryStatus;
@@ -17,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class Item {
 
     @Id

@@ -1,5 +1,6 @@
 package com.main.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "orders")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Order {
     @Id
     @GeneratedValue
@@ -28,7 +30,7 @@ public class Order {
     private Delivery delivery;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "order")
-    private List<OrderItem> orderItemList = new ArrayList<>();
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime orderDate;
 
@@ -37,11 +39,11 @@ public class Order {
     //연관관계 편의 메서드
     public void setMember(Member member) {
         this.member = member;
-        member.getOrderList().add(this);
+        member.getOrders().add(this);
     }
 
     public void addOrderItem(OrderItem orderItem) {
-        this.orderItemList.add(orderItem);
+        this.orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
 
@@ -77,7 +79,7 @@ public class Order {
             throw new IllegalStateException("이미 배송 완료된 상품은 취소할 수 없습니다.");
         }
         this.setStatus(OrderStatus.CANCEL);
-        for (OrderItem orderItem : orderItemList) {
+        for (OrderItem orderItem : orderItems) {
             orderItem.cancel();
         }
     }
@@ -87,7 +89,7 @@ public class Order {
      */
     public int getTotalPrice() {
         int totalPrice = 0;
-        for (OrderItem orderItem : orderItemList) {
+        for (OrderItem orderItem : orderItems) {
             totalPrice += orderItem.getTotalPrice();
         }
         return totalPrice;
