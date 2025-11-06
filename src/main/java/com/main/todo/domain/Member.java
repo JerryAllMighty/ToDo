@@ -1,5 +1,6 @@
 package com.main.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
@@ -21,6 +22,7 @@ public class Member {
     @Column(nullable = false)
     private String name; //사용자 이름
 
+    @JsonIgnore
     @OneToMany(mappedBy = "member")
     private List<Order> orderList = new ArrayList<>();
 
