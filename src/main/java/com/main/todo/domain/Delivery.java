@@ -24,7 +24,6 @@ public class Delivery {
     private Address address;
 
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
-    @JsonIgnore
     private Order order;
 
     @Enumerated(EnumType.STRING)
