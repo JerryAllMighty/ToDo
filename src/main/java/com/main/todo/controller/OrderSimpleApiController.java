@@ -4,7 +4,9 @@ import com.main.todo.domain.Address;
 import com.main.todo.domain.Order;
 import com.main.todo.domain.OrderSearch;
 import com.main.todo.domain.OrderStatus;
+import com.main.todo.dto.OrderSimpleQueryDto;
 import com.main.todo.repository.OrderRepository;
+import com.main.todo.repository.OrderSimpleQueryRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,10 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 public class OrderSimpleApiController {
+
     private final OrderRepository orderRepository;
+
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     @GetMapping("api/v1/simple-orders")
     public List<Order> ordersV1() {
@@ -50,6 +55,11 @@ public class OrderSimpleApiController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("api/v4/simple-orders")
+    public List<OrderSimpleQueryDto> ordersV4() {
+        return orderSimpleQueryRepository.findOrderDto();
+    }
+
     @Data
     static class SimpleOrderDto {
         private Long orderId;
@@ -65,4 +75,6 @@ public class OrderSimpleApiController {
             this.address = order.getDelivery().getAddress();
         }
     }
+
+
 }

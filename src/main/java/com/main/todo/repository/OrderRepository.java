@@ -2,6 +2,7 @@ package com.main.todo.repository;
 
 import com.main.todo.domain.Order;
 import com.main.todo.domain.OrderSearch;
+import com.main.todo.dto.OrderSimpleQueryDto;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 
@@ -35,4 +36,6 @@ public class OrderRepository {
                         " join fetch o.delivery d", Order.class)
                 .getResultList();
     }
+
+
 }
