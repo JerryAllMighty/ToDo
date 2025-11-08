@@ -2,6 +2,7 @@ package com.main.todo.controller;
 
 import com.main.todo.domain.Member;
 import com.main.todo.domain.Order;
+import com.main.todo.domain.OrderItem;
 import com.main.todo.domain.OrderSearch;
 import com.main.todo.domain.item.Item;
 import com.main.todo.service.ItemService;
@@ -50,7 +51,7 @@ public class OrderController {
 
     @GetMapping("/orders")
     public String list(@ModelAttribute("orderSearch") OrderSearch orderSearch, Model model) {
-        List<Order> orders= orderService.findOrders(orderSearch);
+        List<Order> orders = orderService.findOrders(orderSearch);
         model.addAttribute("orders", orders);
 
         return "order/orderList";
