@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class Order {
     private Delivery delivery;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "order")
+    @BatchSize(size = 1000)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime orderDate;
