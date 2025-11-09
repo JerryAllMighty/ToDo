@@ -1,6 +1,8 @@
 package com.main.todo.controller;
 
 import com.main.todo.domain.*;
+import com.main.todo.dto.OrderQueryDto;
+import com.main.todo.repository.OrderQueryRepository;
 import com.main.todo.repository.OrderRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 public class OrderApiController {
 
     private final OrderRepository orderRepository;
+
+    private final OrderQueryRepository orderQueryRepository;
 
     @GetMapping("api/v1/orders")
     public List<Order> ordersV1() {
@@ -59,6 +63,16 @@ public class OrderApiController {
         return orders.stream()
                 .map(o -> new OrderDto(o))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("api/v4/orders")
+    public List<OrderQueryDto> ordersV4() {
+        return orderQueryRepository.findOrderQueryDtos();
+    }
+
+    @GetMapping("api/v5/orders")
+    public List<OrderQueryDto> ordersV5() {
+        return orderQueryRepository.findAllByDto();
     }
 
     @Data
