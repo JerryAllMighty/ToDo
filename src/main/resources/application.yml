@@ -16,6 +16,7 @@ spring:
       hibernate:
         show-sql: true
         format_sql: true
+        default_batch_fetch_size: 100
   h2:
     console:
       enabled: true               # 웹 콘솔 열기
