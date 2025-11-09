@@ -11,9 +11,4 @@ public class ToDoApplication {
         SpringApplication.run(ToDoApplication.class, args);
     }
 
-//    @Bean
-//    public Module hibernateModule() {
-//        return new Hibernate6Module();
-//    }
-
 }
