@@ -1,5 +1,6 @@
 package com.main.todo.repository;
 
+import com.main.todo.dto.OrderFlatDto;
 import com.main.todo.dto.OrderItemQueryDto;
 import com.main.todo.dto.OrderQueryDto;
 import jakarta.persistence.EntityManager;
@@ -77,5 +78,15 @@ public class OrderQueryRepository {
         return result.stream()
                 .map(x -> x.getOrderId())
                 .collect(Collectors.toList());
+    }
+
+    public List<OrderFlatDto> findAllByDto_flat() {
+        return em.createQuery("select new com.main.todo.dto.OrderFlatDto(o.id, m.name, o.orderDate, o.status, d.address, i.name, oi.orderPrice, oi.count)" +
+                " from Order o" +
+                " join o.member m" +
+                " join o.delivery d" +
+                " join o.orderItems oi" +
+                " join oi.item i", OrderFlatDto.class
+        ).getResultList();
     }
 }

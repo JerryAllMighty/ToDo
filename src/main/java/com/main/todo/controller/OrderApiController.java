@@ -1,6 +1,7 @@
 package com.main.todo.controller;
 
 import com.main.todo.domain.*;
+import com.main.todo.dto.OrderFlatDto;
 import com.main.todo.dto.OrderQueryDto;
 import com.main.todo.repository.OrderQueryRepository;
 import com.main.todo.repository.OrderRepository;
@@ -73,6 +74,12 @@ public class OrderApiController {
     @GetMapping("api/v5/orders")
     public List<OrderQueryDto> ordersV5() {
         return orderQueryRepository.findAllByDto();
+    }
+
+    @GetMapping("api/v6/orders")
+    public List<OrderFlatDto> ordersV6() {
+        List<OrderFlatDto> flats = orderQueryRepository.findAllByDto_flat();
+
     }
 
     @Data
