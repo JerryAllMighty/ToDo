@@ -1,15 +1,16 @@
 package com.main.todo.controller;
 
-import com.main.todo.domain.Order;
-import com.main.todo.domain.OrderItem;
-import com.main.todo.domain.OrderSearch;
+import com.main.todo.domain.*;
 import com.main.todo.repository.OrderRepository;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,4 +33,49 @@ public class OrderApiController {
 //        }
         return all;
     }
+
+    @GetMapping("api/v2/orders")
+    public List<OrderDto> ordersV2() {
+        List<Order> orders = orderRepository.findAll(new OrderSearch());
+        return orders.stream()
+                .map(o -> new OrderDto(o))
+                .collect(Collectors.toList());
+    }
+
+    @Data
+    static class OrderDto {
+        private Long orderId;
+        private String name;
+        private LocalDateTime orderDate;
+        private OrderStatus orderStatus;
+        private Address address;
+        private List<OrderItemDto> orderItems;
+
+
+        public OrderDto(Order o) {
+            orderId = o.getId();
+            name = o.getMember().getName();
+            orderDate = o.getOrderDate();
+            orderStatus = o.getStatus();
+            address = o.getDelivery().getAddress();
+            orderItems = o.getOrderItems().stream()
+                    .map(x -> new OrderItemDto(x))
+                    .collect(Collectors.toList());
+        }
+    }
+
+    @Data
+    static class OrderItemDto {
+        private String itemName;
+        private int orderPrice;
+
+        private int count;
+
+        public OrderItemDto(OrderItem orderItem) {
+            this.itemName = orderItem.getItem().getName();
+            this.orderPrice = orderItem.getOrderPrice();
+            this.count = orderItem.getCount();
+        }
+    }
+
 }
